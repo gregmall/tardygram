@@ -14,14 +14,14 @@ describe('tardygram routes', () => {
       .post('/api/v1/auth/signup')
       .send({
         email: 'email@email.com',
-        password_hash: 'hashbuds',
-        profile_photo_url: 'www.picture.com'
+        password: 'hashbuds',
+        profilePhotoUrl: 'www.picture.com'
       });
-
+console.log(response.body);
     expect(response.body).toEqual({
       id: expect.any(String),
       email: 'email@email.com',
-      profile_photo_url: 'www.picture.com'
+      profilePhotoUrl: 'www.picture.com'
     });
 
 
