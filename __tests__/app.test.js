@@ -11,7 +11,7 @@ describe('tardygram routes', () => {
   
   it('creates a new user via POST', async() => {
     const response = await request(app)
-      .post('api/v1/auth/signup')
+      .post('/api/v1/auth/signup')
       .send({
         email: 'email@email.com',
         password_hash: 'hashbuds',
