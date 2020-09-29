@@ -61,7 +61,7 @@ describe('tardygram routes', () => {
 
     const response = await agent
       .get('/api/v1/auth/verify');
-    console.log(response.body);
+    
 
     expect(response.body).toEqual({
       id: expect.any(String),
