@@ -41,12 +41,43 @@ describe('tardygram routes', () => {
         password: 'hashbuds',
         profilePhotoUrl: 'www.picture.com'
       });
-      console.log(response.body)
+    
     expect(response.body).toEqual({
       id: user.id,
       email: 'email@email.com',
       profilePhotoUrl: 'www.picture.com'
     });
+  });
+
+  it('verifies a user using GET', async() => {
+    const agent = request.agent(app);
+    await agent
+      .post('/api/v1/auth/signup')
+      .send({
+        email: 'email@email.com',
+        password: 'hashbuds',
+        profilePhotoUrl: 'www.picture.com'
+      });
+
+    const response = await agent
+      .get('/api/v1/auth/verify');
+    console.log(response.body);
+
+    expect(response.body).toEqual({
+      id: expect.any(String),
+      email: 'email@email.com',
+      profilePhotoUrl: 'www.picture.com'
+    });
+
+    const responseWithoutAUser = await request(app)
+      .get('/api/v1/auth/verify');
+
+    expect(responseWithoutAUser.body).toEqual({
+      status: 500,
+      message: 'jwt must be provided'
+    });
+      
+
   });
 
 });

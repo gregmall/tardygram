@@ -10,7 +10,8 @@
     "start:watch": "nodemon -r dotenv/config server.js"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testTimeout": 10000
   },
   "keywords": [],
   "author": "",
