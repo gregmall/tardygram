@@ -62,7 +62,6 @@ describe('tardygram routes', () => {
     const response = await agent
       .get('/api/v1/auth/verify');
     
-
     expect(response.body).toEqual({
       id: expect.any(String),
       email: 'email@email.com',
@@ -77,7 +76,6 @@ describe('tardygram routes', () => {
       message: 'jwt must be provided'
     });
       
-
   });
 
 });
