@@ -4,7 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const userService = require('../lib/services/user-service');
 
-describe('tardygram routes', () => {
+describe('auth routes', () => {
   beforeEach(() => {
     return pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
 

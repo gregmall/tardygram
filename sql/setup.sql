@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS postgram CASCADE;
 
 CREATE TABLE users (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -7,3 +8,15 @@ CREATE TABLE users (
   profile_photo_url TEXT NOT NULL
 
 );
+
+CREATE TABLE postgram (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id BIGINT REFERENCES users(id),
+  photo_url TEXT NOT NULL,
+  caption TEXT NOT NULL,
+  tags TEXT[]
+
+);
+
+
+
