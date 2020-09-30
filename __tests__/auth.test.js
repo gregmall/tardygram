@@ -72,7 +72,7 @@ describe('auth routes', () => {
       .get('/api/v1/auth/verify');
 
     expect(responseWithoutAUser.body).toEqual({
-      status: 500,
+      status: 401,
       message: 'jwt must be provided'
     });
       
