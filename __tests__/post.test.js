@@ -4,12 +4,10 @@ const request = require('supertest');
 const app = require('../lib/app');
 const userService = require('../lib/services/user-service');
 const { getAgent } = require('../data/data-helpers');
+const Postgram = require('../lib/models/post');
 
 describe('postgram routes', () => {
-  // beforeEach(() => {
-  //   return pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
 
-  // });
   it('creates a new post via POST', async() => {
     const response = await getAgent()
       .post('/api/v1/posts')
@@ -29,7 +27,13 @@ describe('postgram routes', () => {
       tags: ['picture', 'fun', 'family']
       
     });
+  });
 
+  it('gets all posts with GET', async() => {
+    const posts = await Postgram.find();
+    const response = await request(app)
+      .get('/api/v1/posts');
+    expect(response.body).toEqual(expect.arrayContaining(posts));
 
   });
 

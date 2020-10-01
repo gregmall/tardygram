@@ -19,8 +19,8 @@ beforeEach(() => {
     .post('/api/v1/auth/login')
     .send({
       email: 'email0@email.com',
-      password: 'hashbuds0'
-      // profilePhotoUrl: 'www.picture0.com'
+      password: 'hashbuds0',
+      profilePhotoUrl: 'www.picture0.com'
     });
     
 });
