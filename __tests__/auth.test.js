@@ -3,12 +3,10 @@ const pool = require('../lib/utils/pool');
 const request = require('supertest');
 const app = require('../lib/app');
 const userService = require('../lib/services/user-service');
+require('../data/data-helpers');
 
 describe('auth routes', () => {
-  beforeEach(() => {
-    return pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
-
-  });
+  
   
   it('creates a new user via POST', async() => {
     const response = await request(app)

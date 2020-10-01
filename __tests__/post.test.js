@@ -34,7 +34,13 @@ describe('postgram routes', () => {
     const response = await request(app)
       .get('/api/v1/posts');
     expect(response.body).toEqual(expect.arrayContaining(posts));
-    console.log(posts)
+    console.log(response.body)
+
+  });
+
+  it('finds a post by id with GET', async() => {
+    const post = await Postgram.findById(id);
+    const response = await request(app)
 
   });
 
