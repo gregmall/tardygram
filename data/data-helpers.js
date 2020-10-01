@@ -14,13 +14,15 @@ beforeEach(() => {
 
 const agent = request.agent(app);
 beforeEach(() => {
+  
   return agent
-    .post('/api/auth/login')
+    .post('/api/v1/auth/login')
     .send({
       email: 'email0@email.com',
-      password: 'hashbuds0',
-      profilePhotoUrl: 'www.picture0.com'
+      password: 'hashbuds0'
+      // profilePhotoUrl: 'www.picture0.com'
     });
+    
 });
 
 module.exports = {

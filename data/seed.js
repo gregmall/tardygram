@@ -1,6 +1,6 @@
 const chance = require('chance').Chance();
 const UserService = require('../lib/services/user-service');
-const Postgram = require('../lib/models/postgram');
+const Postgram = require('../lib/models/post');
 
 module.exports = async({ userCount = 5 } = {}) => {
   const users = await Promise.all([...Array(userCount)].map((_, i) => {
