@@ -34,6 +34,7 @@ describe('postgram routes', () => {
     const response = await request(app)
       .get('/api/v1/posts');
     expect(response.body).toEqual(expect.arrayContaining(posts));
+    console.log(posts)
 
   });
 
