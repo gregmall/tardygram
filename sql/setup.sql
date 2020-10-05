@@ -22,7 +22,7 @@ CREATE TABLE postgram (
 CREATE TABLE comments (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   comment_by BIGINT NOT NULL REFERENCES users(id),
-  post_id BIGINT NOT NULL REFRENCES posts(id),
+  post_id BIGINT NOT NULL REFERENCES posts(id),
   comment TEXT NOT NULL
 );
 

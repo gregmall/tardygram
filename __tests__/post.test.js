@@ -18,7 +18,7 @@ describe('postgram routes', () => {
         tags: ['picture', 'fun', 'family']
 
       });
-    console.log(response.body);
+    
     expect(response.body).toEqual({
       id: expect.any(String),
       userId : expect.any(String),
@@ -34,7 +34,7 @@ describe('postgram routes', () => {
     const response = await request(app)
       .get('/api/v1/posts');
     expect(response.body).toEqual(expect.arrayContaining(posts));
-    console.log(response.body);
+   
 
   });
 

@@ -1,9 +1,10 @@
 const chance = require('chance').Chance();
 const UserService = require('../lib/services/user-service');
 const Postgram = require('../lib/models/post');
+const Comment = require('../lib/models/comment');
 
 
-module.exports = async({ userCount = 5, postCount = 100 } = {}) => {
+module.exports = async({ userCount = 5, postCount = 50, commentCount = 100 } = {}) => {
   const users = await Promise.all([...Array(userCount)].map((_, i) => {
     return UserService.create({
       email: `email${i}@email.com`,
@@ -19,7 +20,15 @@ module.exports = async({ userCount = 5, postCount = 100 } = {}) => {
       tags: [chance.hashtag()],
       userId: chance.pickone(users).id
     });
-  }));       
+  }));   
+  
+  await Promise.all([...Array(commentCount)].map(() => {
+    return Comment.insert({
+      commentBy: chance.pickone(users).id,
+      postId: chance.pickone(posts).id,
+      comment: chance.sentence()
+    });
+  }));
 
 };
 
