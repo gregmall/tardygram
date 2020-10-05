@@ -42,9 +42,10 @@ describe('postgram routes', () => {
     const post = await Postgram.findById(1);
     const response = await request(app)
       .get('/api/v1/posts/1');
+      console.log(response.body)
 
     expect(response.body).toEqual({
-      ...post,
+      
         
     });
 

@@ -25,7 +25,7 @@ module.exports = async({ userCount = 5, postCount = 50, commentCount = 100 } = {
   await Promise.all([...Array(commentCount)].map(() => {
     return Comment.insert({
       commentBy: chance.pickone(users).id,
-      postId: chance.pickone(posts).id,
+      postId: chance.pickone(postgram).id,
       comment: chance.sentence()
     });
   }));
